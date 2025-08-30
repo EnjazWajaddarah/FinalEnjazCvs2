@@ -112,6 +112,7 @@ export default function Admin({ onClose }: AdminProps) {
       'philippines': 'الفلبين',
       'ethiopia': 'إثيوبيا',
       'kenya': 'كينيا',
+      'bangladesh': 'بنجلاديش',
     };
     return labels[nationality.toLowerCase()] || nationality;
   };
@@ -158,6 +159,7 @@ export default function Admin({ onClose }: AdminProps) {
                       <SelectItem value="philippines">الفلبين</SelectItem>
                       <SelectItem value="ethiopia">إثيوبيا</SelectItem>
                       <SelectItem value="kenya">كينيا</SelectItem>
+                      <SelectItem value="bangladesh">بنجلاديش</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button className="bg-primary hover:bg-primary/90" size="sm">
