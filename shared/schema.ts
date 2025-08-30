@@ -5,7 +5,7 @@ export const cvSchema = z.object({
   _id: z.string().optional(),
   name: z.string().min(1, "Name is required"),
   age: z.number().min(1, "Age must be at least 1").max(100, "Age must be at most 100"),
-  nationality: z.enum(["philippines", "ethiopia", "kenya"], {
+  nationality: z.enum(["philippines", "ethiopia", "kenya", "bangladesh"], {
     required_error: "Nationality is required"
   }),
   experience: z.string().min(1, "Experience is required"),
