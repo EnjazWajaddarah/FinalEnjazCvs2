@@ -60,7 +60,6 @@ export default function Home({ onAdminLogin }: HomeProps) {
     { key: "ethiopia", label: "إثيوبيا", count: counts.ethiopia },
     { key: "kenya", label: "كينيا", count: counts.kenya },
     { key: "bangladesh", label: "بنجلاديش", count: counts.bangladesh },
-  ];ا", count: counts.kenya },
   ];
 
   return (
