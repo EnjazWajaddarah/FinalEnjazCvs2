@@ -38,6 +38,7 @@ export default function Home({ onAdminLogin }: HomeProps) {
       philippines: allCvs.filter(cv => cv.nationality === 'philippines').length,
       ethiopia: allCvs.filter(cv => cv.nationality === 'ethiopia').length,
       kenya: allCvs.filter(cv => cv.nationality === 'kenya').length,
+      bangladesh: allCvs.filter(cv => cv.nationality === 'bangladesh').length,
     };
   };
 
@@ -58,6 +59,8 @@ export default function Home({ onAdminLogin }: HomeProps) {
     { key: "philippines", label: "الفلبين", count: counts.philippines },
     { key: "ethiopia", label: "إثيوبيا", count: counts.ethiopia },
     { key: "kenya", label: "كينيا", count: counts.kenya },
+    { key: "bangladesh", label: "بنجلاديش", count: counts.bangladesh },
+  ];ا", count: counts.kenya },
   ];
 
   return (

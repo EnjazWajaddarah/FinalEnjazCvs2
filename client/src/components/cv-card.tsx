@@ -15,6 +15,7 @@ const getNationalityFlag = (nationality: string) => {
     'philippines': 'https://flagcdn.com/w40/ph.png',
     'ethiopia': 'https://flagcdn.com/w40/et.png',
     'kenya': 'https://flagcdn.com/w40/ke.png',
+    'bangladesh': 'https://flagcdn.com/w40/bd.png',
   };
   return flags[nationality.toLowerCase()] || '';
 };
@@ -24,6 +25,7 @@ const getNationalityLabel = (nationality: string) => {
     'philippines': 'الفلبين',
     'ethiopia': 'إثيوبيا',
     'kenya': 'كينيا',
+    'bangladesh': 'بنجلاديش',
   };
   return labels[nationality.toLowerCase()] || nationality;
 };

@@ -126,6 +126,15 @@ export function FileUpload({ onUpload, isLoading }: FileUploadProps) {
                 <SelectItem value="philippines">الفلبين</SelectItem>
                 <SelectItem value="ethiopia">إثيوبيا</SelectItem>
                 <SelectItem value="kenya">كينيا</SelectItem>
+                <SelectItem value="bangladesh">بنجلاديش</SelectItem>
+              </SelectContent>
+            </Select>right">
+                <SelectValue placeholder="اختر الجنسية" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="philippines">الفلبين</SelectItem>
+                <SelectItem value="ethiopia">إثيوبيا</SelectItem>
+                <SelectItem value="kenya">كينيا</SelectItem>
               </SelectContent>
             </Select>
           </div>
