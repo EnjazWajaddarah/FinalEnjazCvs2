@@ -21,7 +21,7 @@ export default function Admin({ onClose }: AdminProps) {
   const [filterNationality, setFilterNationality] = useState("all");
   const [selectedCv, setSelectedCv] = useState<CvBasic | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [editingCv, setEditingCv] = useState<Cv | null>(null);
+  const [editingCv, setEditingCv] = useState<CvBasic | null>(null);
   const [editForm, setEditForm] = useState({ name: "", age: "", nationality: "", experience: "" });
 
   const { data: cvs = [], isLoading } = useCvs(filterNationality);
@@ -160,6 +160,7 @@ export default function Admin({ onClose }: AdminProps) {
                       <SelectItem value="ethiopia">إثيوبيا</SelectItem>
                       <SelectItem value="kenya">كينيا</SelectItem>
                       <SelectItem value="bangladesh">بنجلاديش</SelectItem>
+                      <SelectItem value="burundi">بورندي</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button className="bg-primary hover:bg-primary/90" size="sm">
