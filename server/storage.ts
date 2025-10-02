@@ -80,9 +80,10 @@ export class MongoStorage implements IStorage {
     try {
       // Use a new collection name to avoid the problematic old data
       const cvs = await this.db.collection('cvs_new')
-        .find({})
-        .sort({ uploadDate: -1 })
-        .limit(50)
+        .aggregate([
+          { $sort: { uploadDate: -1 } },
+          { $limit: 50 }
+        ], { allowDiskUse: true })
         .toArray();
       
       return cvs.map(cv => ({
@@ -106,9 +107,11 @@ export class MongoStorage implements IStorage {
   async getCvsByNationality(nationality: string): Promise<Cv[]> {
     try {
       const cvs = await this.db.collection('cvs_new')
-        .find({ nationality })
-        .sort({ uploadDate: -1 })
-        .limit(50)
+        .aggregate([
+          { $match: { nationality } },
+          { $sort: { uploadDate: -1 } },
+          { $limit: 50 }
+        ], { allowDiskUse: true })
         .toArray();
       
       return cvs.map(cv => ({
@@ -155,9 +158,11 @@ export class MongoStorage implements IStorage {
   async getAllCvsBasic(): Promise<Omit<Cv, 'fileData'>[]> {
     try {
       const cvs = await this.db.collection('cvs_new')
-        .find({}, { projection: { fileData: 0 } }) // Exclude fileData
-        .sort({ uploadDate: -1 })
-        .limit(50)
+        .aggregate([
+          { $project: { fileData: 0 } }, // Exclude fileData
+          { $sort: { uploadDate: -1 } },
+          { $limit: 50 }
+        ], { allowDiskUse: true })
         .toArray();
       
       return cvs.map(cv => ({
@@ -180,9 +185,12 @@ export class MongoStorage implements IStorage {
   async getCvsByNationalityBasic(nationality: string): Promise<Omit<Cv, 'fileData'>[]> {
     try {
       const cvs = await this.db.collection('cvs_new')
-        .find({ nationality }, { projection: { fileData: 0 } }) // Exclude fileData
-        .sort({ uploadDate: -1 })
-        .limit(50)
+        .aggregate([
+          { $match: { nationality } },
+          { $project: { fileData: 0 } }, // Exclude fileData
+          { $sort: { uploadDate: -1 } },
+          { $limit: 50 }
+        ], { allowDiskUse: true })
         .toArray();
       
       return cvs.map(cv => ({
