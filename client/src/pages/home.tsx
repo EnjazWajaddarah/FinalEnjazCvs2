@@ -22,6 +22,7 @@ export default function Home({ onAdminLogin }: HomeProps) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isAdminLoginOpen, setIsAdminLoginOpen] = useState(false);
 
+  const { data: allCvs = [], isLoading: isLoadingAll } = useCvs();
   const { data: cvs = [], isLoading } = useCvs(selectedNationality);
 
   // Filter CVs based on search query
@@ -31,19 +32,14 @@ export default function Home({ onAdminLogin }: HomeProps) {
   );
 
   // Get counts for each nationality
-  const getCounts = () => {
-    const allCvs = useCvs().data || [];
-    return {
-      all: allCvs.length,
-      philippines: allCvs.filter(cv => cv.nationality === 'philippines').length,
-      ethiopia: allCvs.filter(cv => cv.nationality === 'ethiopia').length,
-      kenya: allCvs.filter(cv => cv.nationality === 'kenya').length,
-      bangladesh: allCvs.filter(cv => cv.nationality === 'bangladesh').length,
-      burundi: allCvs.filter(cv => cv.nationality === 'burundi').length,
-    };
+  const counts = {
+    all: allCvs.length,
+    philippines: allCvs.filter(cv => cv.nationality === 'philippines').length,
+    ethiopia: allCvs.filter(cv => cv.nationality === 'ethiopia').length,
+    kenya: allCvs.filter(cv => cv.nationality === 'kenya').length,
+    bangladesh: allCvs.filter(cv => cv.nationality === 'bangladesh').length,
+    burundi: allCvs.filter(cv => cv.nationality === 'burundi').length,
   };
-
-  const counts = getCounts();
 
   const handlePreview = (cv: CvBasic) => {
     setSelectedCv(cv);
