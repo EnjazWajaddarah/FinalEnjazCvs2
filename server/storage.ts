@@ -81,8 +81,7 @@ export class MongoStorage implements IStorage {
       // Use a new collection name to avoid the problematic old data
       const cvs = await this.db.collection('cvs_new')
         .aggregate([
-          { $sort: { uploadDate: -1 } },
-          { $limit: 50 }
+          { $sort: { uploadDate: -1 } }
         ], { allowDiskUse: true })
         .toArray();
       
@@ -160,8 +159,7 @@ export class MongoStorage implements IStorage {
       const cvs = await this.db.collection('cvs_new')
         .aggregate([
           { $project: { fileData: 0 } }, // Exclude fileData
-          { $sort: { uploadDate: -1 } },
-          { $limit: 50 }
+          { $sort: { uploadDate: -1 } }
         ], { allowDiskUse: true })
         .toArray();
       
